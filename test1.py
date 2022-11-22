@@ -71,7 +71,6 @@ def main():
 
             if event.obj.message["from_id"] not in user_dict:
                 user_dict[event.obj.message["from_id"]] = 1
-                print(user_dict)
                 pass
 
             if event.obj.message["text"] == "я" and user_dict[event.obj.message["from_id"]] == 1:
