@@ -29,9 +29,9 @@ def get_photo(found_user_id: int) -> list:
     photo_list = vk_user.photos.get(owner_id=found_user_id, album_id="profile", extended=1)
     return photo_list
 
-def send_message(session, vk_id: int, text: str) -> None:
+def send_message(session, vk_id: int, text: str, attachment=None, keyboard= None) -> None:
     session.method('messages.send',
-                   {'user_id': vk_id, 'message': text, 'random_id': 0, 'keyboard': None, 'attachment': None})
+                   {'user_id': vk_id, 'message': text, 'random_id': 0, 'keyboard': keyboard, 'attachment': attachment})
 
 
 def listener(self_id):
@@ -42,7 +42,7 @@ def listener(self_id):
             user_photos = preview_photos(user_photo_list)
             pprint(user_photos)
             send_message(vk_group_session, self_id, f'{user["first_name"]} {user["last_name"]}\n'
-                                                    f'https://vk.com/id{user["id"]}\n'
+                                                    f'https://vk.com/id{user["id"]}\n',
                                                     f'photo{user["id"]}_{user_photos[0][0]},'
                                                     f'photo{user["id"]}_{user_photos[1][0]},'
                                                     f'photo{user["id"]}_{user_photos[2][0]}')
