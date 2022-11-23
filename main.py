@@ -85,13 +85,13 @@ def listener(self_id, session):
         for event in longpoll.listen():
             if event.type == VkBotEventType.MESSAGE_NEW:
                 if self_id == event.obj.message["from_id"]:
-                    if event.obj.message["text"].isdigit() and int(event.obj.message["text"]) > 0 and int(event.obj.message["text"]) < 100:
+                    if event.obj.message["text"].isdigit() and int(event.obj.message["text"]) > 0 and int(
+                            event.obj.message["text"]) < 100:
                         vkinder_user_age = int(event.obj.message["text"])
                         break
                     else:
                         send_message(vk_group_session, self_id,
                                      "Пока не введёшь нормальный возраст, ничего не получится.")
-
 
     count = 100
     age_step = 3
@@ -106,7 +106,6 @@ def listener(self_id, session):
 
     for raw in request_blacklist:
         black_list.append(raw.watched_vk_id)
-
 
     for user in found_user['items']:
 
@@ -141,14 +140,16 @@ def listener(self_id, session):
                     if event.obj.message["text"].lower() == "в избранное":
                         session.add(Preferences(vk_id=self_id, watched_vk_id=user["id"], status_id=1))
                         session.commit()
-                        send_message(vk_group_session, event.obj.message["from_id"], text="добавили в избранное, ищем дальше...",
+                        send_message(vk_group_session, event.obj.message["from_id"],
+                                     text="добавили в избранное, ищем дальше...",
                                      keyboard=regular_keyboard.get_keyboard())
                         break
 
                     if event.obj.message["text"].lower() == "в чс":
                         session.add(Preferences(vk_id=self_id, watched_vk_id=user["id"], status_id=2))
                         session.commit()
-                        send_message(vk_group_session, event.obj.message["from_id"], text="добавили в ЧС, ищем дальше...",
+                        send_message(vk_group_session, event.obj.message["from_id"],
+                                     text="добавили в ЧС, ищем дальше...",
                                      keyboard=regular_keyboard.get_keyboard())
                         black_list.append(user["id"])
                         break
@@ -159,7 +160,8 @@ def listener(self_id, session):
                             data = vk_user.users.get(user_id=user.watched_vk_id, fields="first_name, last_name")
                             first_name = data[0]['first_name']
                             last_name = data[0]['last_name']
-                            user_photo_list = vk_user.photos.get(owner_id=user.watched_vk_id, album_id="profile", extended=1)
+                            user_photo_list = vk_user.photos.get(owner_id=user.watched_vk_id, album_id="profile",
+                                                                 extended=1)
                             user_photos = preview_photos(user_photo_list)
                             send_message(vk_group_session, self_id, f'{first_name} {last_name}\n'
                                                                     f'https://vk.com/id{user.watched_vk_id}\n',
@@ -176,7 +178,6 @@ def listener(self_id, session):
 
 
 def main():
-
     engine = sq.create_engine(os.getenv('DSN'))
     drop_tables(engine)
     create_tables(engine)
