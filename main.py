@@ -188,7 +188,7 @@ def main():
         if event.type == VkBotEventType.MESSAGE_NEW:
 
             if event.obj.message["from_id"] not in user_dict:
-                send_message(vk_group_session, event.obj.message["from_id"], text="Для начала работы нажмитне начать.",
+                send_message(vk_group_session, event.obj.message["from_id"], text="Для начала работы нажмите начать.",
                              keyboard=welcome_keyboard.get_keyboard())
                 user_dict[event.obj.message["from_id"]] = 1
 
