@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-23T09:05:29.711Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.0.2424 Yowser/2.5 Safari/537.36" etag="-BWjedihHmJsn3ZIVQb9" version="20.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-23T09:06:20.739Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.0.2424 Yowser/2.5 Safari/537.36" etag="7Nuqr4dIIAV7kD2yLC5h" version="20.5.3" type="github">
   <diagram id="-ezVPmXWp63Q6jTZU1Et" name="Страница 1">
     <mxGraphModel dx="1374" dy="789" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -28,7 +28,7 @@
             <mxRectangle width="30" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="U9IRikWzYCCtAuOFdxoM-20" value="vk_id" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" vertex="1" parent="U9IRikWzYCCtAuOFdxoM-18">
+        <mxCell id="U9IRikWzYCCtAuOFdxoM-20" value="user_id" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" vertex="1" parent="U9IRikWzYCCtAuOFdxoM-18">
           <mxGeometry x="30" width="150" height="30" as="geometry">
             <mxRectangle width="150" height="30" as="alternateBounds" />
           </mxGeometry>
@@ -41,7 +41,7 @@
             <mxRectangle width="30" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="U9IRikWzYCCtAuOFdxoM-23" value="watched_id" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" vertex="1" parent="U9IRikWzYCCtAuOFdxoM-21">
+        <mxCell id="U9IRikWzYCCtAuOFdxoM-23" value="watched_vk_id" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" vertex="1" parent="U9IRikWzYCCtAuOFdxoM-21">
           <mxGeometry x="30" width="150" height="30" as="geometry">
             <mxRectangle width="150" height="30" as="alternateBounds" />
           </mxGeometry>
@@ -110,7 +110,7 @@
         <mxCell id="U9IRikWzYCCtAuOFdxoM-45" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1" parent="U9IRikWzYCCtAuOFdxoM-41">
           <mxGeometry y="60" width="180" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="U9IRikWzYCCtAuOFdxoM-46" value="PK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;" vertex="1" parent="U9IRikWzYCCtAuOFdxoM-45">
+        <mxCell id="U9IRikWzYCCtAuOFdxoM-46" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;" vertex="1" parent="U9IRikWzYCCtAuOFdxoM-45">
           <mxGeometry width="30" height="30" as="geometry">
             <mxRectangle width="30" height="30" as="alternateBounds" />
           </mxGeometry>
@@ -120,7 +120,7 @@
             <mxRectangle width="150" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="U9IRikWzYCCtAuOFdxoM-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="U9IRikWzYCCtAuOFdxoM-45" target="U9IRikWzYCCtAuOFdxoM-18">
+        <mxCell id="U9IRikWzYCCtAuOFdxoM-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="U9IRikWzYCCtAuOFdxoM-42" target="U9IRikWzYCCtAuOFdxoM-18">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
