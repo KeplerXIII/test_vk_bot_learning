@@ -26,6 +26,7 @@ welcome_keyboard.add_button(label="Начать", color=VkKeyboardColor.POSITIVE
 welcome_keyboard.add_button(label="Мои данные", color=VkKeyboardColor.POSITIVE)
 regular_keyboard.add_button(label="Дальше", color=VkKeyboardColor.POSITIVE)
 regular_keyboard.add_button(label="В избранное", color=VkKeyboardColor.POSITIVE)
+regular_keyboard.add_button(label="В ЧС", color=VkKeyboardColor.NEGATIVE)
 
 
 def preview_photos(user_photo_list: list) -> list:
@@ -89,11 +90,12 @@ def listener(self_id, session):
 
 
     for user in found_user['items']:
-        # еще недоделанная проверка
-        # request_blacklist = session.query(Preferences).filter_by(vk_id=self_id, status_id=2).all()
-        # black_list = [x for x in request_blacklist]
-        # if user["id"] in black_list:
-        #     send_message(vk_group_session, self_id, "попался аккаунт из черного списка, ищем дальше...")
+
+        request_blacklist = session.query(Preferences).filter_by(vk_id=self_id, status_id=2).all()
+        black_list = [x for x in request_blacklist]
+        if user["id"] in black_list:
+            send_message(vk_group_session, self_id, "попался аккаунт из черного списка, ищем дальше...")
+            continue
 
         if user['is_closed']:
             send_message(vk_group_session, self_id, "попался закрытый аккаунт, ищем дальше...")
@@ -108,7 +110,7 @@ def listener(self_id, session):
                          f'photo{user["id"]}_{user_photos[1][0]},'
                          f'photo{user["id"]}_{user_photos[2][0]}', keyboard=regular_keyboard.get_keyboard())
         else:
-            send_message(vk_group_session, self_id, "у пользователя недостаточно фото, ищем...")
+            send_message(vk_group_session, self_id, "у пользователя недостаточно фото, ищем дальше...")
             continue
 
         for event in longpoll.listen():
@@ -122,7 +124,14 @@ def listener(self_id, session):
                     if event.obj.message["text"].lower() == "в избранное":
                         session.add(Preferences(vk_id=self_id, watched_vk_id=user["id"], status_id=1))
                         session.commit()
-                        send_message(vk_group_session, event.obj.message["from_id"], text="ожидай...",
+                        send_message(vk_group_session, event.obj.message["from_id"], text="добавили в избранное, ищем дальше...",
+                                     keyboard=regular_keyboard.get_keyboard())
+                        break
+
+                    if event.obj.message["text"].lower() == "в чс":
+                        session.add(Preferences(vk_id=self_id, watched_vk_id=user["id"], status_id=2))
+                        session.commit()
+                        send_message(vk_group_session, event.obj.message["from_id"], text="добавили в ЧС, ищем дальше...",
                                      keyboard=regular_keyboard.get_keyboard())
                         break
 
